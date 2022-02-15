@@ -59,6 +59,14 @@ class HttpQueryHelper {
                 return result;
             }, {});
     }
+
+    /**
+     * @param {Array<string, any>} array
+     * @returns {Array<string, any>}
+     */
+    removeArrayUndefinedValues(array = []) {
+        return array.map(object => this.removeUndefinedValues({...object }));
+    }
 }
 
 module.exports = HttpQueryHelper;
