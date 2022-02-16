@@ -267,12 +267,25 @@ class MauticConnector {
              */
             createContact: queryParameters => this._callApi({method: 'POST', url: this._makeUrl('/contacts/new'), body: JSON.stringify(this._httpQueryHelper.removeUndefinedValues({...queryParameters, overwriteWithBlank: true}))}),
             /**
+             * @param {MauticUserFields[]} queryParameters
+             * @returns {Promise<{contacts: MauticContact[]}>}
+             */
+            createBatchContact: queryParameters => this._callApi({method: 'POST', url: this._makeUrl('/contacts/batch/new'), body: JSON.stringify(this._httpQueryHelper.removeArrayUndefinedValues(queryParameters))}), 
+            
+            /**
              * @param {'PUT'|'PATCH'} method
              * @param {MauticUserFields} queryParameters
              * @param {int} contactId
              * @returns {Promise<{contact: MauticContact}>}
              */
             editContact: (method, queryParameters, contactId) => this._callApi({method: this._ensureMethodIsPutOrPatch(method), url: this._makeUrl('/contacts/' + contactId + '/edit'), body: JSON.stringify(this._httpQueryHelper.removeUndefinedValues({...queryParameters, overwriteWithBlank: true}))}),
+            
+            /**
+             * @param {MauticUserFields[]} queryParameters
+             * @returns {Promise<{contact: MauticContact[]}>}
+             */
+            editBatchContact: queryParameters => this._callApi({method: 'PATCH', url: this._makeUrl('/contacts/batch/edit'), body: JSON.stringify(this._httpQueryHelper.removeArrayUndefinedValues(queryParameters))}), 
+            
             /**
              * @param {int} contactId
              * @returns {Promise<{contact: MauticContact}>}

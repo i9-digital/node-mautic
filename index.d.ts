@@ -62,7 +62,9 @@ declare class Mautic {
     listContacts: (queryParameters: Mautic.Parameters) => Promise<Mautic.Response>
     queryContacts: (queryParameters: Mautic.Parameters) => Promise<Mautic.Response>
     createContact: (queryParameters: Mautic.Parameters) => Promise<Mautic.Response>
+    createBatchContact: (queryParameters: Mautic.Parameters) => Promise<Mautic.Response>
     editContact: (method: Mautic.EditMethod, queryParameters: Mautic.Parameters, contactId: Mautic.EntityID) => Promise<Mautic.Response>
+    editBatchContact: (queryParameters: Mautic.Parameters) => Promise<Mautic.Response>
     deleteContact: (contactId: Mautic.EntityID) => Promise<Mautic.Response>
     addPoints: (contactId: Mautic.EntityID, queryParameters: Mautic.Parameters, points: number | string) => Promise<Mautic.Response>
     subtractPoints: (contactId: Mautic.EntityID, queryParameters: Mautic.Parameters, points: number | string) => Promise<Mautic.Response>
